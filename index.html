@@ -9,20 +9,25 @@
     <body>
         <h1>Vue.js</h1>
         <div id="app">
-            {{ message * 1.08 + '円' }}
+            {{ message }}
         </div>
         <hr>
-        <input type="number" onInput="doAction(event)"/>
+        <button onclick="doAction();">
+            click
+        </button>
         <script>
             const data = {
-                message: 'please type!'
+                message: 'Hello Vue!'
             };
             const app = new Vue({
                 el: '#app',
-                data: data
+                data: data,
+                render: (element)=>{
+                    return element("p",data.message);
+                }
             })
             function doAction() {
-                data.message = event.target.value;
+                data.message = "You Clicked!!!";
             }
         </script>
     </body>
