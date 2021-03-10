@@ -12,19 +12,17 @@
             {{ message }}
         </div>
         <hr>
-        <button onclick="doAction();">
-            Click
-        </button>
+        <input type="text" onInput="doAction(event)"/>
         <script>
             const data = {
-                message: 'Hello Vue!'
+                message: 'please type!'
             };
             const app = new Vue({
                 el: '#app',
                 data: data
             })
             function doAction() {
-                data.message = "You Clicked!!!";
+                data.message = event.target.value;
             }
         </script>
     </body>
