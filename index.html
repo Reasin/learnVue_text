@@ -10,16 +10,22 @@
         <h1>Vue.js</h1>
         <div id="app">
             {{ message }}
-            {{ name }}
         </div>
+        <hr>
+        <button onclick="doAction();">
+            Click
+        </button>
         <script>
-            var app = new Vue({
+            const data = {
+                message: 'Hello Vue!'
+            };
+            const app = new Vue({
                 el: '#app',
-                data: {
-                    message:'Hello Vue!',
-                    name:"hage"
-                }
+                data: data
             })
+            function doAction() {
+                data.message = "You Clicked!!!";
+            }
         </script>
     </body>
 </html>
