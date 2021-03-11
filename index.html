@@ -17,23 +17,31 @@
         </button>
         <script>
             const data = {
-                message: 'Hello Vue!'
+                message: 'Hello Vue!',
+                items: ['One', 'Two', 'Three', 'Four', 'Five']
             };
             const app = new Vue({
                 el: '#app',
                 data: data,
                 render: (element)=>{
-                    return element("ol",
-                        [
-                            element("li","item 1"),
-                            element("li","item 2"),
-                            element("li","item 3")
-                        ]
-                    );
+                    const p = element("p",
+                        {style:'font-size:20pt;'},
+                        data.message);
+                    const li = data.items.map(item => element('li', item));
+                    const ol = element("ol", li);
+                    const div = element("div", [p, ol]);
+                    return div;
                 }
             })
             function doAction() {
-                data.message = "You Clicked!!!";
+                const newdata = [
+                    'いち', 'に', 'さん', 'よん', 'ご'
+                ]
+                data.message = "クリックしました!!!";
+                data.items[0] = 'ゼロ';
+                for (n in data.items) {
+                    data.items[n] = newdata[n];
+                }
             }
         </script>
     </body>
