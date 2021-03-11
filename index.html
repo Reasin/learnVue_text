@@ -23,15 +23,16 @@
             const app = new Vue({
                 el: '#app',
                 data: data,
-                render: (element)=>{
-                    const p = element("p",
-                        {style:'font-size:20pt;'},
-                        data.message
-                    );
-                    const li = data.items.map(item => element('li', item));
-                    const ol = element("ol", li);
-                    const div = element("div", [p, ol]);
-                    return div;
+                render: (h)=>{
+                    return h("div",[
+                        h("p",
+                            {style:'font-size:20pt;'},
+                            data.message
+                        ),
+                        h("ol",
+                            data.items.map(i=> h('li', i))
+                        )
+                    ]);
                 }
             })
             function doAction() {
