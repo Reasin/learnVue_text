@@ -23,12 +23,12 @@
                 el: '#app',
                 data: data,
                 render: (element)=>{
-                    return element(
-                        "p",
-                        {'style':
-                            'font-size:20pt; color:red;'
-                        },
-                        data.message
+                    return element("ol",
+                        [
+                            element("li","item 1"),
+                            element("li","item 2"),
+                            element("li","item 3")
+                        ]
                     );
                 }
             })
