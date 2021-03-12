@@ -9,29 +9,23 @@
     <body>
         <h1>Vue.js</h1>
         <div id="app">
-            <ol v-html="messages"></ol>
+            <p v-bind:style="style">{{ message }}</p>
         </div>
         <hr>
-        <input type="text" onInput="doInput(event);">
-        <button onclick="doAction();">
-            click
-        </button>
-
+        <input type="number" onchange="doChange(event);" value="20">
         <script>
             const data = {
-                messages: '<li>Hello Vue!</li>'
+                message: 'Hello Vue!',
+                style: 'font-size: 20pt; color: red;'
             };
 
             const app = new Vue({
                 el:'#app',
-                data:data
+                data: data
             });
 
-            function doInput(event) {
-                data.message = event.target.value;
-            }
-            function doAction() {
-                data.messages += '<li>' + data.message + '</li>'
+            function doChange(event) {
+                data.style = 'font-size:' + event.target.value + 'pt; color:red;'
             }
         </script>
     </body>
