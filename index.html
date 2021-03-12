@@ -7,25 +7,48 @@
         <script src="https://unpkg.com/vue"></script>
     </head>
     <body>
-        <h1>Vue.js</h1>
+        <style>
+        .red {
+            font-size: 20pt;
+            font-weight: bold;
+            font-style: normal;
+            color: red;
+        }
+        .blue {
+            font-size: 24pt;
+            font-weight: plain;
+            font-style: italic;
+            color: blue;
+        }
+        </style>
+        <h1>
+            Vue.js
+        </h1>
         <div id="app">
-            <p :style="style">{{ message }}</p>
+            <p :class = "{red:isRed, blue:isBlue}">
+                {{ message }}
+            </p>
         </div>
         <hr>
-        <input type="number" onchange="doChange(event);" value="20">
+        <button onclick="doAction();">
+            click
+        </button>
+
         <script>
             const data = {
-                message: 'Hello Vue!',
-                style: 'font-size: 20pt; color: red;'
+                message:'Hello Vue!',
+                isRed: true,
+                isBlue: false
             };
 
             const app = new Vue({
-                el:'#app',
+                el: '#app',
                 data: data
             });
 
-            function doChange(event) {
-                data.style = 'font-size:' + event.target.value + 'pt; color:red;'
+            function doAction() {
+                data.isRed = !data.isRed;
+                data.isBlue = !data.isBlue;
             }
         </script>
     </body>
