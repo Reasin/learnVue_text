@@ -7,32 +7,14 @@
         <script src="https://unpkg.com/vue"></script>
     </head>
     <body>
-        <style>
-        .red {
-            font-size: 20pt;
-            font-weight: bold;
-            font-style: normal;
-            color: red;
-        }
-        .blue {
-            font-size: 24pt;
-            font-weight: lighter;
-            font-style: italic;
-            color: blue;
-        }
-        </style>
         <h1>
             Vue.js
         </h1>
         <div id="app">
-            <p :class = "classes">
+            <p :style = "styles">
                 {{ message }}
             </p>
         </div>
-        <hr>
-        <button onclick="doAction();">
-            click
-        </button>
 
         <script>
             const classObj = {
@@ -42,18 +24,20 @@
 
             const data = {
                 message:'Hello Vue!',
-                classes: classObj
+                styles: {
+                    margin:'10px',
+                    padding:'5px 20px',
+                    fontSize: '20pt',
+                    color: 'red',
+                    backgroundColor: '#fee',
+                    border: '3px solid blue'
+                }
             };
 
             const app = new Vue({
                 el: '#app',
                 data: data
             });
-
-            function doAction() {
-                classObj.red = !classObj.red;
-                classObj.blue = !classObj.blue;
-            }
         </script>
     </body>
 </html>
