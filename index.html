@@ -18,67 +18,45 @@
                 font-size: 16pt;
                 color: gray;
                 border: 1px solid gray;
-            }
-            li {
-                font-size: 16pt;
-                color: gray;
+                padding: 5px 15px;
             }
         </style>
         <h1>
             Vue.js
         </h1>
         <div id="app">
-            <template v-if="flag">
-                <p>
-                    ※データをテーブル表示する
-                </p>
-                <table>
-                    <tr>
-                        <th>Name</th>
-                        <th>mail</th>
-                    </tr>
-                    <tr>
-                        <td>Taro</td>
-                        <td>taro@yamada</td>
-                    </tr>
-                    <tr>
-                        <td>Hanako</td>
-                        <td>hanako@flower</td>
-                    </tr>
-                    <tr>
-                        <td>Sachiko</td>
-                        <td>sachiko@happy</td>
-                    </tr>
-                </table>
-            </template>
-            <template v-else>
-                <p>
-                    ※データをリスト表示する
-                </p>
-                <ul>
-                    <li>Taroのアドレスは、taro@yamadaです。</li>
-                    <li>hanakoのアドレスは、hanako@flowerです。</li>
-                    <li>Sachikoのアドレスは、sachiko@happyです。</li>
-                </ul>
-            </template>
+            <p>
+                ※データをテーブル表示する
+            </p>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>mail</th>
+                    <th>tel</th>
+                </tr>
+                <tr v-for="item in items">
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.mail }}</td>
+                    <td>{{ item.tel }}</td>
+                </tr>
+            </table>
         </div>
-        <hr>
-        <button onclick="doAction();">
-            click
-        </button>
+
         <script>
             const data = {
-                flag: true
-            };
+                items: [
+                    {name:'Taro', mail:'taro@yamada', tel:'999-999'},
+                    {name:'Hanako', mail:'hanako@flower', tel:'888-888'},
+                    {name:'Sachiko', mail:'sachiko@happy', tel:'777-777'},
+                    {name:'Jiro', mail:'jiro@change', tel:'666-666'},
+                    {name:'Mami', mail:'mami@mumemo', tel:'555-555'}
+                ]
+            }
 
             const app = new Vue({
                 el: '#app',
                 data: data
             });
-            
-            function doAction() {
-                data.flag = !data.flag;
-            }
         </script>
     </body>
 </html>
