@@ -30,25 +30,35 @@
             </p>
             <table>
                 <tr>
+                    <th>ID</th>
                     <th>Name</th>
                     <th>mail</th>
                     <th>tel</th>
                 </tr>
-                <tr v-for="(item, key) in items">
-                    <td>{{ key }}</td>
+                <tr v-for="(item, index) in items" v-if="index % 2 == 0">
+                    <td>{{ index }}</td>
+                    <td>{{ item.name }}</td>
                     <td>{{ item.mail }}</td>
                     <td>{{ item.tel }}</td>
+                </tr>
+                <tr v-else>
+                    <td>***非公開***</td>
+                    <td>***非公開***</td>
+                    <td>***非公開***</td>
+                    <td>***非公開***</td>
                 </tr>
             </table>
         </div>
 
         <script>
             const data = {
-                items: {
-                    Taro:{mail:'taro@yamada', tel:'999-999'},
-                    Hanako:{mail:'hanako@flower', tel:'888-888'},
-                    Sachiko:{mail:'sachiko@happy', tel:'777-777'},
-                }
+                items: [
+                    {name:'hfdage' , mail:'emafsdfsil', tel:'943-433'},
+                    {name:'hfdage' , mail:'embdfsail', tel:'93343-433433'},
+                    {name:'harwerwge' , mail:'ehttmail', tel:'944t3-3433'},
+                    {name:'herweage' , mail:'emasdfsil', tel:'94333-4343'},
+                    {name:'hdxfsdage' , mail:'emdbtrrail', tel:'943-43213'}
+                ]
             }
 
             const app = new Vue({
