@@ -30,14 +30,12 @@
             </p>
             <table>
                 <tr>
-                    <th>ID</th>
                     <th>Name</th>
                     <th>mail</th>
                     <th>tel</th>
                 </tr>
-                <tr v-for="(item, id) in items">
-                    <td>{{ id }}</td>
-                    <td>{{ item.name }}</td>
+                <tr v-for="(item, key) in items">
+                    <td>{{ key }}</td>
                     <td>{{ item.mail }}</td>
                     <td>{{ item.tel }}</td>
                 </tr>
@@ -46,13 +44,11 @@
 
         <script>
             const data = {
-                items: [
-                    {name:'Taro', mail:'taro@yamada', tel:'999-999'},
-                    {name:'Hanako', mail:'hanako@flower', tel:'888-888'},
-                    {name:'Sachiko', mail:'sachiko@happy', tel:'777-777'},
-                    {name:'Jiro', mail:'jiro@change', tel:'666-666'},
-                    {name:'Mami', mail:'mami@mumemo', tel:'555-555'}
-                ]
+                items: {
+                    Taro:{mail:'taro@yamada', tel:'999-999'},
+                    Hanako:{mail:'hanako@flower', tel:'888-888'},
+                    Sachiko:{mail:'sachiko@happy', tel:'777-777'},
+                }
             }
 
             const app = new Vue({
