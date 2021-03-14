@@ -8,14 +8,19 @@
     </head>
     <body>
         <style>
-            .ok {
-                font-size: 24pt;
-                color: blue;
-                padding: 5px 10px;
-                border: 2px solid red;
+            table tr th {
+                font-size: 16pt;
+                color: white;
+                background-color: blue;
+                padding: 5px 15px;
             }
-            .ng {
-                font-size: 20pt;
+            table tr td {
+                font-size: 16pt;
+                color: gray;
+                border: 1px solid gray;
+            }
+            li {
+                font-size: 16pt;
                 color: gray;
             }
         </style>
@@ -23,13 +28,41 @@
             Vue.js
         </h1>
         <div id="app">
-            <p v-if = "flag" class="ok">
-                これは正常な表示です。
-            </p>
-            <p v-else class="ng">
-                ※問題が発生中です......
-            </p>
+            <template v-if="flag">
+                <p>
+                    ※データをテーブル表示する
+                </p>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>mail</th>
+                    </tr>
+                    <tr>
+                        <td>Taro</td>
+                        <td>taro@yamada</td>
+                    </tr>
+                    <tr>
+                        <td>Hanako</td>
+                        <td>hanako@flower</td>
+                    </tr>
+                    <tr>
+                        <td>Sachiko</td>
+                        <td>sachiko@happy</td>
+                    </tr>
+                </table>
+            </template>
+            <template v-else>
+                <p>
+                    ※データをリスト表示する
+                </p>
+                <ul>
+                    <li>Taroのアドレスは、taro@yamadaです。</li>
+                    <li>hanakoのアドレスは、hanako@flowerです。</li>
+                    <li>Sachikoのアドレスは、sachiko@happyです。</li>
+                </ul>
+            </template>
         </div>
+        <hr>
         <button onclick="doAction();">
             click
         </button>
