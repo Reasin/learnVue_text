@@ -26,7 +26,12 @@
         <script>
             Vue.component ( 'hello',
             {
-                template: '<p class="hello">Hello!</p>'
+                data:function() {
+                    return {
+                        message:'This is new message'
+                    };
+                },
+                template: '<p class="hello">{{ message }}</p>'
             })
 
             const app = new Vue({
