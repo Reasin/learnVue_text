@@ -20,15 +20,18 @@
             Vue.js
         </h1>
         <div id="app">
-            <div><hello :name="name" /></div>
-            <div><input type="text" v-model="name" /></div>
+            <hello />
         </div>
 
         <script>
             Vue.component ( 'hello',
             {
-                props:['name'],
-                template: '<p class="hello">Hello, {{ name }}</p>'
+                data:function() {
+                    return {
+                        counter:0
+                    };
+                },
+                template: '<p v-on:click="counter++;" class="hello">clicked: {{ counter }}</p>'
             })
 
             const app = new Vue({
