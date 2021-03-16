@@ -20,22 +20,21 @@
             Vue.js
         </h1>
         <div id="app">
-            <hello />
+            <hello v-for="item in data" :name="item">
         </div>
 
         <script>
             Vue.component ( 'hello',
             {
-                data:function() {
-                    return {
-                        message:'This is new message'
-                    };
-                },
-                template: '<p class="hello">{{ message }}</p>'
+                props:['name'],
+                template: '<p class="hello">Hello, {{ name }}</p>'
             })
 
             const app = new Vue({
                 el: '#app',
+                data:{
+                    data:['Taro', 'Hanako', 'Sachiko', 'Jiro']
+                }
             });
         </script>
     </body>
