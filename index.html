@@ -5,65 +5,32 @@
         <title>My first Vue app</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <script src="https://unpkg.com/vue"></script>
-    </head>
-    <body>
         <style>
-            table tr th {
-                font-size: 16pt;
-                color: white;
-                background-color: blue;
-                padding: 5px 15px;
-            }
-            table tr td {
-                font-size: 16pt;
-                color: gray;
-                border: 1px solid gray;
-                padding: 5px 15px;
+            .hello {
+                font-size: 20pt;
+                font-weight: bold;
+                border: 1px solid magenta ;
+                padding: 5px 10px 0px 10px;
+                margin: 10px;
             }
         </style>
+    </head>
+    <body>
         <h1>
             Vue.js
         </h1>
         <div id="app">
-            <p>
-                ※データをテーブル表示する
-            </p>
-            <table>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>mail</th>
-                    <th>tel</th>
-                </tr>
-                <tr v-for="(item, index) in items" v-if="index % 2 == 0">
-                    <td>{{ index }}</td>
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.mail }}</td>
-                    <td>{{ item.tel }}</td>
-                </tr>
-                <tr v-else>
-                    <td>***非公開***</td>
-                    <td>***非公開***</td>
-                    <td>***非公開***</td>
-                    <td>***非公開***</td>
-                </tr>
-            </table>
+            <hello />
         </div>
 
         <script>
-            const data = {
-                items: [
-                    {name:'hfdage' , mail:'emafsdfsil', tel:'943-433'},
-                    {name:'hfdage' , mail:'embdfsail', tel:'93343-433433'},
-                    {name:'harwerwge' , mail:'ehttmail', tel:'944t3-3433'},
-                    {name:'herweage' , mail:'emasdfsil', tel:'94333-4343'},
-                    {name:'hdxfsdage' , mail:'emdbtrrail', tel:'943-43213'}
-                ]
-            }
+            Vue.component ( 'hello',
+            {
+                template: '<p class="hello">Hello!</p>'
+            })
 
             const app = new Vue({
                 el: '#app',
-                data: data
             });
         </script>
     </body>
