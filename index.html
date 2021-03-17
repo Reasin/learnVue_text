@@ -6,12 +6,9 @@
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <script src="https://unpkg.com/vue"></script>
         <style>
-            .hello {
-                font-size: 20pt;
-                font-weight: bold;
-                border: 1px solid magenta ;
-                padding: 5px 10px 0px 10px;
-                margin: 10px;
+            .red {
+                color: white;
+                background-color: red;
             }
         </style>
     </head>
@@ -24,14 +21,28 @@
         </div>
 
         <script>
-            Vue.component ( 'hello',
+            const hello = Vue.component ( 'hello',
             {
                 data:function() {
                     return {
-                        counter:0
+                        counter:0,
+                        isRed:false
                     };
                 },
-                template: '<p v-on:click="counter++;" class="hello">clicked: {{ counter }}</p>'
+                methods:{
+                    doAction:function(event) {
+                        this.counter++;
+                        if(this.counter > 10) {
+                            this.counter = 0;
+                        }
+                        if(this.counter % 2 == 0) {
+                            this.isRed = false;
+                        } else {
+                            this.isRed = true;
+                        }
+                    }
+                },
+                template: '<p v-bind:class="{red:isRed}" v-on:click="doAction" class="hello">clicked: {{ counter }}</p>'
             })
 
             const app = new Vue({
