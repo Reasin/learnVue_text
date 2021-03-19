@@ -21,35 +21,26 @@
         </div>
 
         <script>
-            const hello = Vue.component ( 'hello',
-            {
+            Vue.component('hello', {
                 data:function() {
                     return {
-                        counter:0,
-                        isRed:false
+                        num:0,
                     };
                 },
-                methods:{
-                    doAction:function(event) {
-                        this.counter++;
-                        if(this.counter > 10) {
-                            this.counter = 0;
+                computed:{
+                    calc:function(event) {
+                        var total = 0;
+                        for (var i = 1; i <=this.num;i++){
+                            total += i;
                         }
-                        if(this.counter % 2 == 0) {
-                            this.isRed = false;
-                        } else {
-                            this.isRed = true;
-                        }
+                        return "total:" + total;
                     }
                 },
-                template: '<p v-bind:class="{red:isRed}" v-on:click="doAction" class="hello">clicked: {{ counter }}</p>'
-            })
+                template:'<div><p class="hello">{{ calc }}</p><div><input type="number" v-model="num"></div></div>'
+            });
 
             const app = new Vue({
                 el: '#app',
-                data:{
-                    name:'no-name'
-                }
             });
         </script>
     </body>
