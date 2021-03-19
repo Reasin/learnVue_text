@@ -22,4 +22,6 @@ upgrade：バージョンアップ
 
 revert：変更取り消し
 
+【例】refs #110 更新SQLの対象カラムに削除フラグが含まれていなかったため追加しました。
+
 https://qiita.com/itosho/items/9565c6ad2ffc24c09364
